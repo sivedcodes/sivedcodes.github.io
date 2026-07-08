@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offline-First KMP: Ustad Mobile — Prashant Deshmukh</title>
+<meta name="description" content="Building Ustad Mobile with KMP, Jetpack Compose, and Google Nearby API. 97% bandwidth reduction through peer-to-peer sync.">
+<meta name="keywords" content="kotlin multiplatform, KMP, ustad mobile, offline-first, jetpack compose, sivedcodes">
+<link rel="canonical" href="https://sivedcodes.github.io/blog/kmp-offline-first-ustad-mobile.html">
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <nav class="nav">
+    <a href="/" class="nav-logo">sivedcodes</a>
+    <div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="https://github.com/sivedcodes">GitHub</a></div>
+  </nav>
+
+  <article>
+    <div class="article-header">
+      <div class="date">Jun 20, 2026 · 7 min read · By <strong>Prashant Deshmukh</strong></div>
+      <h1>Building Offline-First Apps with Kotlin Multiplatform: The Ustad Mobile Story</h1>
+      <div class="tags"><span class="tag tag-accent">KMP</span><span class="tag">Kotlin</span><span class="tag">Offline-First</span><span class="tag">Compose</span></div>
+    </div>
+
+    <div class="article-body">
+      <p><strong>Ustad Mobile</strong> is an open-source Learning Management System designed for emerging markets where internet connectivity is unreliable. Built with <strong>Kotlin Multiplatform</strong> and <strong>Jetpack Compose</strong>, it serves learners across <strong>30+ countries</strong>.</p>
+
+      <p>I led the Android/KMP development at <strong>Chimple Learning (Sutara Learning Foundation)</strong>, where we tackled one of the hardest problems in educational technology: delivering rich learning content to students without internet.</p>
+
+      <h2>The Challenge</h2>
+      <ul>
+        <li>Full offline access to courses, videos, and assessments</li>
+        <li>Peer-to-peer content sharing without internet infrastructure</li>
+        <li>Cross-platform support (Android, Web, Desktop)</li>
+        <li>Support for xAPI, H5P, ePub, PDF, and video content</li>
+      </ul>
+
+      <h2>Why Kotlin Multiplatform?</h2>
+      <ul>
+        <li><strong>50%+ code reuse</strong> between Android, Web, and Desktop</li>
+        <li><strong>Native performance</strong> — no bridge overhead for Nearby API</li>
+        <li><strong>Shared business logic</strong> — sync, encryption, content parsing in common code</li>
+        <li><strong>Jetpack Compose</strong> — modern declarative UI with multiplatform support</li>
+      </ul>
+
+      <h2>Architecture</h2>
+      <pre><code>commonMain/
+├── domain/       # Business logic, entities
+├── data/         # Repositories, data sources
+├── network/      # Ktor HTTP client, sync engine
+└── platform/     # Expect/actual declarations
+
+androidMain/      # Nearby API, SQLite, Camera
+desktopMain/      # File system access
+webMain/          # Browser storage, PWA</code></pre>
+
+      <h2>Google Nearby API Integration</h2>
+      <p>The core innovation was using <strong>Google Nearby Connections API</strong> for peer-to-peer file sharing. In a classroom of 30 students, one downloads content via WiFi and others receive it via peer-to-peer sync — achieving <strong>97%+ bandwidth reduction</strong>.</p>
+
+      <h2>Results</h2>
+      <table>
+        <tr><th>Metric</th><th>Before</th><th>After KMP + Nearby API</th></tr>
+        <tr><td>Bandwidth per classroom</td><td>~500 MB/day</td><td>&lt;15 MB/day</td></tr>
+        <tr><td>Offline functionality</td><td>Limited</td><td>Full offline support</td></tr>
+        <tr><td>Cross-platform code reuse</td><td>~10%</td><td>~50%</td></tr>
+        <tr><td>User engagement</td><td>Baseline</td><td>+35%</td></tr>
+      </table>
+
+      <h2>Meshrabiya: The Mesh Layer</h2>
+      <p>We also built <strong>Meshrabiya</strong>, the mesh networking layer powering Ustad Mobile's sync — enabling WiFi communication without any access point using virtual IP addressing and UDP packet routing.</p>
+
+      <div class="article-author">
+        <strong>Prashant Deshmukh (sivedcodes)</strong>
+        <div style="color:var(--text-muted);font-size:.85em">Lead Malware Analyst & Developer at V-Patrol AI</div>
+        <div class="links">
+          <a href="https://linkedin.com/in/sivedcodes">LinkedIn</a>
+          <a href="https://github.com/sivedcodes">GitHub</a>
+          <a href="https://prashant-deshmukh.web.app">Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="footer">
+    <p>© 2026 <strong>Prashant Deshmukh</strong> · <a href="/blog/">All Articles</a></p>
+  </div>
+</div>
+</body>
+</html>

