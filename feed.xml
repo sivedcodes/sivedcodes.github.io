@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prashant Deshmukh (sivedcodes)</title>
+    <link>https://sivedcodes.github.io</link>
+    <description>Android security, KMP, malware analysis articles by Prashant Deshmukh</description>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jul 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://sivedcodes.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>OTP Bypass System Vulnerability</title>
+      <link>https://sivedcodes.github.io/blog/otp-bypass-vulnerability-2017.html</link>
+      <description>Early security research — OTP bypass via API session manipulation discovered in 2017.</description>
+      <pubDate>Tue, 15 Aug 2017 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>CVE-2026-0098: Android Version Spoofing</title>
+      <link>https://sivedcodes.github.io/blog/cve-2026-0098-android-version-spoofing.html</link>
+      <description>How I discovered a critical Android vulnerability — from reverse engineering to Google's patch.</description>
+      <pubDate>Fri, 15 May 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>APK Binder: Android Binary Instrumentation</title>
+      <link>https://sivedcodes.github.io/blog/apk-binder-android-binary-instrumentation.html</link>
+      <description>Technical deep dive into DEX injection, Smali patching, Metasploit integration, and antivirus evasion.</description>
+      <pubDate>Tue, 02 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Building Offline-First Apps with KMP: Ustad Mobile</title>
+      <link>https://sivedcodes.github.io/blog/kmp-offline-first-ustad-mobile.html</link>
+      <description>Building a cross-platform LMS with KMP, Jetpack Compose, and peer-to-peer sync.</description>
+      <pubDate>Sat, 20 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Android Developer to Malware Analyst</title>
+      <link>https://sivedcodes.github.io/blog/android-malware-analysis-journey.html</link>
+      <description>My transition from building apps to breaking them — lessons in reverse engineering and Google PHA.</description>
+      <pubDate>Wed, 01 Jul 2026 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

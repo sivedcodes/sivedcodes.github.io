@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Research — Prashant Deshmukh (sivedcodes)</title>
+<meta name="description" content="Security research by Prashant Deshmukh (sivedcodes): CVE-2026-0098, OTP bypass (2017), APK Binder, Telegram security analysis, Google PHA malware detection.">
+<meta name="keywords" content="sivedcodes security research, CVE-2026-0098, OTP bypass, APK binder, android vulnerability, malware analysis, prashant deshmukh">
+<link rel="canonical" href="https://sivedcodes.github.io/research/">
+<link rel="stylesheet" href="/assets/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org","@type":"CollectionPage",
+  "name":"Security Research by Prashant Deshmukh",
+  "author":{"@type":"Person","name":"Prashant Deshmukh","url":"https://github.com/sivedcodes"},
+  "description":"Security vulnerabilities, tools, and analysis by Prashant Deshmukh (sivedcodes)"
+}
+</script>
+<style>
+.research-card{border-left:3px solid;margin-bottom:24px;padding-left:20px}
+.research-card.cve{border-color:#f472b6}
+.research-card.otp{border-color:#22d3ee}
+.research-card.tool{border-color:#a78bfa}
+.research-card.telegram{border-color:#f59e0b}
+.research-card.pha{border-color:#34d399}
+.research-card .pill{display:inline-block;font-size:.7em;font-weight:700;padding:3px 10px;border-radius:100px;margin-right:6px;text-transform:uppercase;letter-spacing:.5px}
+.pill.cve{background:rgba(244,114,182,.15);color:#f472b6}
+.pill.otp{background:rgba(34,211,238,.15);color:#22d3ee}
+.pill.tool{background:rgba(167,139,250,.15);color:#a78bfa}
+.pill.telegram{background:rgba(245,158,11,.15);color:#f59e0b}
+.pill.pha{background:rgba(52,211,153,.15);color:#34d399}
+.cvss-score{display:inline-flex;align-items:center;gap:8px;background:var(--bg-elevated);padding:4px 14px;border-radius:100px;font-size:.85em;font-weight:700}
+.cvss-score .num{color:#f472b6}
+</style>
+</head>
+<body>
+<div class="container">
+  <nav class="nav">
+    <a href="/" class="nav-logo">sivedcodes</a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/research/" class="active">Research</a>
+      <a href="/blog/">Blog</a>
+      <a href="https://github.com/sivedcodes">GitHub</a>
+    </div>
+  </nav>
+
+  <section class="hero" style="padding:40px 0 20px;text-align:left">
+    <h1 style="font-size:2.2em">Security <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Research</span></h1>
+    <p style="margin:8px 0 0">Vulnerabilities discovered, tools built, and analysis contributed by Prashant Deshmukh (sivedcodes). Security research since <strong>2017</strong>.</p>
+  </section>
+
+  <div class="section" style="margin-top:10px">
+
+    <div class="research-card cve">
+      <div><span class="pill cve">CVE</span><span class="cvss-score">CVSS 3.1 <span class="num">7.8</span> High</span></div>
+      <h3 style="margin:10px 0 6px;font-size:1.2em">CVE-2026-0098 — Android Version Spoofing & Silent Installation</h3>
+      <p style="color:var(--text-muted);font-size:.9em;margin-bottom:8px">Discovered: Feb 2026 · Patched by Google: May 2026</p>
+      <p style="color:var(--text-muted);font-size:.88em">Critical vulnerability in Android's PackageManager allowing attackers to spoof version codes and trigger silent installations. Root cause: missing validation of versionCode against signing certificates during INSTALL_PACKAGES Intent resolution.</p>
+      <p style="margin-top:8px"><strong>Impact:</strong> Arbitrary code execution via malicious "update" delivery without user consent</p>
+      <div style="margin-top:10px"><a href="/blog/cve-2026-0098-android-version-spoofing.html" class="tag tag-accent">Full Writeup →</a></div>
+    </div>
+
+    <div class="research-card otp">
+      <div><span class="pill otp">2017</span></div>
+      <h3 style="margin:10px 0 6px;font-size:1.2em">OTP Bypass System Vulnerability</h3>
+      <p style="color:var(--text-muted);font-size:.9em;margin-bottom:8px">Discovered: 2017</p>
+      <p style="color:var(--text-muted);font-size:.88em">Discovered a critical flaw in SMS-based OTP authentication. The server generated session tokens before OTP verification completed, allowing direct session token access without valid OTP. API-level session manipulation enabled complete account takeover.</p>
+      <p style="margin-top:8px"><strong>Impact:</strong> Full account compromise — personal data, transactions, sensitive operations</p>
+      <div style="margin-top:10px"><a href="/blog/otp-bypass-vulnerability-2017.html" class="tag tag-accent">Full Writeup →</a></div>
+    </div>
+
+    <div class="research-card tool">
+      <div><span class="pill tool">TOOL</span></div>
+      <h3 style="margin:10px 0 6px;font-size:1.2em">APK Binder — Android Binary Instrumentation Framework</h3>
+      <p style="color:var(--text-muted);font-size:.9em;margin-bottom:8px">Built: 2026</p>
+      <p style="color:var(--text-muted);font-size:.88em">Professional-grade Android binary instrumentation suite automating DEX bytecode injection and payload binding. Features Metasploit integration, custom Smali injection, multi-dex handling, and antivirus evasion.</p>
+      <p style="margin-top:8px"><strong>Capabilities:</strong> DEX injection · Smali patching · Media interception · Anti-detection</p>
+      <div style="margin-top:10px"><a href="/blog/apk-binder-android-binary-instrumentation.html" class="tag tag-accent">Technical Deep Dive →</a></div>
+    </div>
+
+    <div class="research-card telegram">
+      <div><span class="pill telegram">RESEARCH</span></div>
+      <h3 style="margin:10px 0 6px;font-size:1.2em">Telegram SQL Injection & Binder Exploit Analysis</h3>
+      <p style="color:var(--text-muted);font-size:.9em;margin-bottom:8px">Research: 2026</p>
+      <p style="color:var(--text-muted);font-size:.88em">Identified potential SQL injection vectors in Telegram's client-server interaction combined with Binder-based code injection. Research demonstrated how SQL injection combined with DEX bytecode manipulation could potentially expose chat data through compromised message handlers.</p>
+      <p style="margin-top:8px"><strong>Vector:</strong> SQL injection + Binder interaction + Custom code injection → Data exposure</p>
+    </div>
+
+    <div class="research-card pha">
+      <div><span class="pill pha">PROJECT</span></div>
+      <h3 style="margin:10px 0 6px;font-size:1.2em">Google PHA (Potentially Harmful App) Analysis</h3>
+      <p style="color:var(--text-muted);font-size:.9em;margin-bottom:8px">LTIMindtree · Google Project · Sep 2025 – Nov 2025</p>
+      <p style="color:var(--text-muted);font-size:.88em">Analyzed 50+ apps per week for Google's PHA program. Static and dynamic analysis across Java, Kotlin, Flutter, React Native, Unity, and Cordova apps. Detected Phishing, Spyware, Trojan, Backdoor, Billing Fraud (SMS/Toll Fraud), Privilege Escalation, and Adware.</p>
+      <p style="margin-top:8px"><strong>Tools:</strong> JADX · Ghidra · Frida · HTTP Toolkit · APKTool · Metasploit</p>
+      <div style="margin-top:10px"><a href="/blog/android-malware-analysis-journey.html" class="tag tag-accent">Career Journey →</a></div>
+    </div>
+
+  </div>
+
+  <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;margin-bottom:40px">
+    <h3 style="margin-bottom:8px">Research Methodology</h3>
+    <p style="color:var(--text-muted);font-size:.88em">
+      All research follows responsible disclosure practices. Vulnerabilities are reported to vendors before public disclosure. Tools are designed exclusively for authorized security testing and research. Research methodology combines static analysis (JADX, Ghidra), dynamic analysis (Frida, HTTP Toolkit), and runtime instrumentation.
+    </p>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <span class="tag">JADX</span><span class="tag">Ghidra</span><span class="tag">Frida</span>
+      <span class="tag">APKTool</span><span class="tag">Metasploit</span><span class="tag">HTTP Toolkit</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>© 2026 <strong>Prashant Deshmukh</strong> · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="https://github.com/sivedcodes">GitHub</a></p>
+  </div>
+</div>
+</body>
+</html>
